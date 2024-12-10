@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bỏ phiếu ứng dụng Blockchain</title>
+
+  <!-- External CSS & Fonts -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap&subset=vietnamese" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      font-size: 20px;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 50px;
+      margin-top: 50px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, #007bff, #00b4d8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: #00b4d8;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    table {
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #f8f9fa;
+    }
+
+    th {
+      background-color: #0288d1;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+      font-size: 1.4rem;
+      padding: 15px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e1f5fe;
+    }
+    tr:hover {
+      background-color: #0288d1 !important;
+      transition: 0.1s ease-in;
+
+    }
+    tr:hover td {
+      font-size: 1.9rem;
+      font-weight: bold;
+      color: white;
+      transition: 0.1s ease-in;
+    }
+
+    .table-container {
+      max-height: 268px; /* Giới hạn chiều cao */
+      overflow-y: auto;  /* Bật cuộn dọc */
+      border-radius: 15px;
+    }
+
+    .form-group label {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #0288d1;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #0288d1, #00acc1);
+      color: #fff;
+      border: none;
+      padding: 20px 35px;
+      border-radius: 30px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      width: 100%;
+      display: block;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #01579b, #00838f);
+      transform: translateY(-3px);
+    }
+
+    #loader p {
+      font-size: 2rem;
+      color: #0288d1;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #totalVotes {
+      font-size: 1.8rem;
+      color: #0288d1;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #accountAddress {
+      margin-top: 20px;
+      font-size: 1.6rem;
+      color: #131313;
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 900px;">
+    <h1 style="margin-top: -10px;">Bỏ phiếu ứng dụng Blockchain</h1>
+    <div id="topCandidates" class="d-flex justify-content-around mb-4">
+      <!-- Sẽ được cập nhật động bằng JavaScript -->
+    </div>    
+    <div id="loader">
+      <p>Đang tải dữ liệu, vui lòng đợi...</p>
+    </div>
+    <div id="content" style="display: none;">
+      <h2 id="totalVotes"></h2>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" >Mã số</th>
+            <th scope="col"; idth=10%>Ảnh ứng viên</th>
+            <th scope="col"; width=20%>Tên</th>
+            <th scope="col"; width=36%>Thông tin ứng viên</th>
+            <th scope="col"; width=12%>Số phiếu</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="table-container">
+        <table class="table table-hover table-bordered">
+          <tbody id="candidatesResults">
+            <!-- Các ứng viên sẽ được thêm động -->
+          </tbody>
+        </table>
+      </div>
+      <form onSubmit="App.castVote(); return false;">
+        <div class="form-group">
+          <label for="candidatesSelect">Chọn ứng viên</label>
+          <select class="form-control" id="candidatesSelect"></select>
+        </div>
+        <button type="submit" class="btn">Bỏ phiếu</button>
+      </form>
+      <p id="accountAddress"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
