@@ -24,15 +24,12 @@ contract Election {
     );
 
     constructor () public {
-        addCandidate("Ứng viên 1", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 1");
-        addCandidate("Ứng viên 2", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 2");
-        addCandidate("Ứng viên 3", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 3");
-        addCandidate("Ứng viên 4", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 4");
-        addCandidate("Ứng viên 5", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 5");
-        addCandidate("Ứng viên 6", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 6");
-        addCandidate("Ứng viên 7", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 7");
-        addCandidate("Ứng viên 8", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 8");
-        //addCandidateWithVotes("Ứng viên 9", "https://images.pexels.com/photos/26447251/pexels-photo-26447251/free-photo-of-v-t-nuoi-meo-con-con-meo-d-t.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Thông tin về ứng viên 9", 100);
+        addCandidate("Ứng viên 1", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkGzXOcFZcNL8058KHlehxRY1rNaSPcQrnXQ&s", "Thông tin về ứng viên 1");
+        addCandidate("Ứng viên 2", "https://hoangphucphoto.com/wp-content/uploads/2022/12/aenh-chan-dung.jpg", "Thông tin về ứng viên 2");
+        addCandidate("Ứng viên 3", "https://www.yourstudiovn.com/uploads/hinhthe/IMG_2784_copy.jpg", "Thông tin về ứng viên 3");
+        addCandidate("Ứng viên 4", "https://gcs.tripi.vn/public-tripi/tripi-feed/img/473782Qys/2m-studio-858536.jpg", "Thông tin về ứng viên 4");
+        addCandidate("Ứng viên 5", "https://topquangngai.vn/wp-content/uploads/2021/02/chup-anh-the-dep-quang-ngai-2.jpg", "Thông tin về ứng viên 5");
+        addCandidate("Ứng viên 6", "https://www.yourstudiovn.com/uploads/hinhthe/chup-anh-the-dep-nhat-TPHCM-13.jpg", "Thông tin về ứng viên 6");
     }
 
     function addCandidate (string _name, string _imageURL, string _candidateInfo) private {
